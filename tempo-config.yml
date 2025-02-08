@@ -1,0 +1,24 @@
+server:
+  http_listen_port: 3200
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo
+    wal:
+      path: /var/tempo/wal
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        grpc: {}
+        http: {}
+
+compactor:
+  compaction:
+    block_retention: 1h
+
+usage_report:
+  reporting_enabled: false
